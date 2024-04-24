@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+  </head>
+  <body>
+    <div id="root">
+      <!-- <h1 class="heading" style="color: palevioletred">
+        Hello Trong Hoa handsome
+      </h1>
+      <form onsubmit="SubmitForm(event)" id="noti-form">
+        <label for="age">How old are you?</label>
+        <input required type="number" name="age" id="age" /><br />
+
+        <label for="hobbies">Which are your hobbies?</label>
+        <input required type="text" name="hobbies" id="hobbies" /><br />
+
+        <label for="major">Major</label>
+        <select name="major" id="major">
+          <option value="SE">Software engineering</option>
+          <option value="KS">Korea</option>
+          <option value="JS">Japan</option>
+          <option value="ES">English</option>
+        </select>
+        <input type="submit" value="Submit" />
+      </form> -->
+    </div>
+  </body>
+
+  <script>
+    const SubmitForm = (event) => {
+      event.preventDefault();
+      const age = document.getElementById("age").value;
+      const hobbies = document.getElementById("hobbies").value;
+      const major = document.getElementById("major").value;
+      alert(`Age: ${age}\nHobbies: ${hobbies}\nMajor: ${major}`);
+    };
+
+    const heading = React.createElement(
+      "h1",
+      {
+        className: "heading",
+        style: { color: "palevioletred" },
+      },
+      "Hello Trong Hoa handsome"
+    );
+
+    const form = React.createElement(
+      "form",
+      {
+        id: "noti-form",
+        onSubmit: SubmitForm,
+      },
+      React.createElement("label", { htmlFor: "age" }, "How old are you?"),
+      React.createElement("input", {
+        type: "number",
+        name: "age",
+        id: "age",
+        required: true,
+      }),
+      React.createElement("br"),
+      React.createElement(
+        "label",
+        { htmlFor: "hobbies" },
+        "Which are your hobbies?"
+      ),
+      React.createElement("input", {
+        type: "text",
+        name: "hobbies",
+        id: "hobbies",
+        required: true,
+      }),
+      React.createElement("br"),
+      React.createElement('label', {htmlFor: 'major'}, 'Major'),
+      React.createElement(
+        "select",
+        { name: "major", id: "major" },
+        React.createElement("option", { value: "SE" }, "Software engineering"),
+        React.createElement("option", { value: "KS" }, "Korea"),
+        React.createElement("option", { value: "JS" }, "Japan"),
+        React.createElement("option", { value: "ES" }, "English")
+      ),
+      React.createElement("input", { type: "submit", value: "Submit" })
+    );
+
+    const parent = React.createElement("div", null, heading, form);
+
+    const container = document.getElementById("root");
+    const root = ReactDOM.createRoot(container);
+    root.render(parent);
+  </script>
+</html>
