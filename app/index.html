@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <!-- <h1 title="Hello" class="heading">Hello guys</h1>
+
+    <ul>
+        <l1>Javascript</l1>
+        <l1>ReactJS</l1>
+    </ul>
+
+    <div class="post-item">
+        <h2 title="Hoc React cung Hoa">Hoc ReactJS</h2>
+        <p>Hoc React tu co ban toi nang cao</p>
+    </div> -->
+</body>
+
+<script>
+    //Dom
+    // const h1DOM = document.createElement('h1');
+    // h1DOM.title = 'Hello';
+    // h1DOM.className = 'heading';
+    // h1DOM.innerHTML = 'Hello guys';
+
+    // document.body.appendChild(h1DOM);
+
+    //REACT
+    //React.createElement(type, props, children)
+    const h1React = React.createElement('h1', {
+        title: 'Hello', 
+        className: 'heading'
+    }, 'Hello guys');
+    //Just create the element, not render it, if you want to render it, you need to use ReactDOM
+
+
+    // const ulDom = document.createElement('ul');
+    // ulDom.id = 'ul-id';
+    // ulDom.style = 'color: green; font-size: 50px;'
+    // const liDom1 = document.createElement('li');
+    // liDom1.innerText = 'Javascript';
+    // const liDom2 = document.createElement('li');
+    // liDom2.innerText = 'ReactJS';
+    // ulDom.appendChild(liDom1);
+    // ulDom.appendChild(liDom2);
+    // document.body.appendChild(ulDom);
+
+    //Bai 2
+    const ulReact = React.createElement(
+        'ul', 
+        {
+            id: 'ul-id',
+            style: {color: 'red', fontSize: '30px'}
+        }, 
+        React.createElement('li', null, 'Javascript'),
+        React.createElement('li', null, 'ReactJS')
+    )
+    console.dir(ulReact);
+    //Bai 3
+    const divReact = React.createElement(
+        'div',
+        {
+            className: 'post-item'
+        },
+        React.createElement(
+            'h2',
+            {
+                title: 'Hoc React cung Hoa'
+            },
+            'Hoc ReactJS'
+        ),
+        React.createElement(
+            'p',
+            null,
+            'Hoc ReactJS tu co ban den nang cao'
+        )
+    )
+
+    //Get root element
+    const parent = React.createElement('div', null, divReact, ulReact);
+
+    //React-DOM -> render UI
+
+    //React@17
+    const container = document.querySelector('#root');
+    ReactDOM.render(parent, container);
+
+    //React#18
+    // const root = ReactDOM.createRoot(container);
+    // root.render(parent);
+
+
+ </script>
+</html>
