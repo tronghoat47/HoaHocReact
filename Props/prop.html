@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script type="text/babel">
+        function PostItem(props) {
+            if(props.callback) {
+                props.callback(Math.random());
+            }
+            return (
+                <div className="post-item">
+                    <img src={props.image} alt="Image test" style={{width:"300px"}}/>
+                    <h2 className="post-title">{props.title}</h2>
+                    <p className="post-desc">{props.desc}</p>
+                    <p className="post-published">{props.published}</p>
+                </div>
+            )
+        }
+
+        const app = (
+            <div className="post-list">
+                <PostItem 
+                    image="https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"
+                    title="React for beginner"
+                    desc="This is a description of React for beginner"
+                    published="Published on 2021-10-10"
+                    callback = {(random) => {
+                        console.log(`Random number: ${random}`);
+                    }}
+                />
+                <PostItem 
+                    image="https://images.inc.com/uploaded_files/image/1920x1080/getty_133970892_157811.jpg"
+                    title="Java for beginner"
+                    desc="This is a description of Java for beginner"
+                    published="Published on 2021-10-10"
+                />
+                <PostItem 
+                    image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjI_SCYLp8Q9uzVp0WBhAbj5QKHcOb2cntP2VU_DIniQ&s"
+                    title=".Net for beginner"
+                    desc="This is a description of .Net for beginner"
+                    published="Published on 2021-10-10"
+                />
+            </div>
+        )
+
+        const container = $("#app")[0];
+        const root = ReactDOM.createRoot(container);
+        root.render(app);
+    </script>
+</body>
+</html>
