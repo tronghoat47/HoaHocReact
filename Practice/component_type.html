@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script type="text/babel">
+        function PostItem() {
+            return (
+                <div className="post-item">
+                    <img src="https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg" alt="Image test" style={{width:"300px"}}/>
+                    <h2 className="post-title">JavaScript for beginner</h2>
+                    <p className="post-desc">This is a description of JavaScript for beginner</p>
+                    <p className="post-published">Published on 2021-10-10</p>
+                </div>
+            )
+        }
+
+        const app = (
+            <div className="post-list">
+                <PostItem />
+                <PostItem />
+                <PostItem />
+            </div>
+        )
+        console.log(app);
+
+        const container = $("#app")[0];
+        const root = ReactDOM.createRoot(container);
+        root.render(app);
+    </script>
+</body>
+</html>

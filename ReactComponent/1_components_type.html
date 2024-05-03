@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script type="text/babel">
+
+        function Header() {
+            return (
+                <div className="header">Header</div>
+            )
+        }
+        function Content() {
+            return (
+                <div className="content">Content</div>
+            )
+        }
+        function Footer() {
+            return (
+                <div className = "footer">Footer</div>
+            )
+        }
+
+        //Test type class component
+        class TestClass extends React.Component {
+            render() {
+                return (
+                    <div className="test-class" style={{color:"red"}}>Test Class Component</div>
+                )
+            }
+        }
+
+        const app = (
+            <div className="wrapper">
+                <Header />
+                <Content/>
+                <Footer/>
+                <TestClass/>
+            </div>
+        )
+
+        const container = $("#app")[0];
+        const root = ReactDOM.createRoot(container);
+        root.render(app);
+    </script>
+</body>
+</html>
