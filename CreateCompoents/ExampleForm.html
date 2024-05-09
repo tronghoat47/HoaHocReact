@@ -8,6 +8,16 @@
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        .style-for-navigate {
+            display: block;
+            padding: 10px;
+            margin: 10px;
+            background-color: #f1f1f1;
+            text-decoration: none;
+            color: black;
+        }
+    </style>
 </head>
 <body>
     <div id="root"></div>
@@ -23,17 +33,18 @@
         }
 
         function Button({title, href, onClick}) {
-            let Component = 'button';
-            const props = {};
-            if(href) {
-                Component = 'a';
+            let Component = 'a';
+            let props = {};
+            if(href){
                 props.href = href;
             }
             if(onClick){
+                Component = 'button';
                 props.onClick = onClick;
             }
+
             return (
-                <Component {...props}>{title}</Component>
+                <Component className="style-for-navigate" {...props}>{title}</Component>
             )
         }
 
@@ -56,9 +67,28 @@
             )
         }
 
+        function List({data, children}) {
+            return (
+                <ul>
+                    {data.map((item, index) => {
+                        return children(item, index);
+                    })}
+                </ul>
+            )
+        }
+
+        function AnotherApp() {
+            const data = ["BMW", "Audi", "Mercedes"];
+            return (
+                <List data={data}>
+                    {(item, index) => <li key={index}>{item}</li>}
+                </List>
+            )
+        }
+
         const container = $("#root")[0];
         const root = ReactDOM.createRoot(container);
-        root.render(<App />);
+        root.render(<AnotherApp />);
     </script>
 </body>
 </html>
